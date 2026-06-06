@@ -3,7 +3,6 @@ import { Row, RowState } from "./Row";
 import dictionary from "./dictionary.json";
 import { Clue, clue, describeClue, violation } from "./clue";
 import { Keyboard } from "./Keyboard";
-import targetList from "./targets.json";
 import {
   describeSeed,
   dictionarySet,
@@ -31,10 +30,11 @@ interface GameProps {
   keyboardLayout: string;
 }
 
-const targets = targetList.slice(0, targetList.indexOf("murky") + 1); // Words no rarer than this one
+const targets = ["frog"];
 const minLength = 4;
-const defaultLength = 5;
-const maxLength = 11;
+const defaultLength = 4;
+const maxLength = 4;
+
 const limitLength = (n: number) =>
   n >= minLength && n <= maxLength ? n : defaultLength;
 
@@ -64,7 +64,7 @@ try {
   console.warn(e);
   challengeError = true;
 }
-if (initChallenge && !dictionarySet.has(initChallenge)) {
+if (initChallenge && (!dictionarySet.has(initChallenge) || initChallenge !== "frog")) {
   initChallenge = "";
   challengeError = true;
 }
@@ -262,44 +262,6 @@ function Game(props: GameProps) {
 
   return (
     <div className="Game" style={{ display: props.hidden ? "none" : "block" }}>
-      <div className="Game-options">
-        <label htmlFor="wordLength">Letters:</label>
-        <input
-          type="range"
-          min={minLength}
-          max={maxLength}
-          id="wordLength"
-          disabled={
-            gameState === GameState.Playing &&
-            (guesses.length > 0 || currentGuess !== "" || challenge !== "")
-          }
-          value={wordLength}
-          onChange={(e) => {
-            const length = Number(e.target.value);
-            resetRng();
-            setGameNumber(1);
-            setGameState(GameState.Playing);
-            setGuesses([]);
-            setCurrentGuess("");
-            setTarget(randomTarget(length));
-            setWordLength(length);
-            setHint(`${length} letters`);
-          }}
-        ></input>
-        <button
-          style={{ flex: "0 0 auto" }}
-          disabled={gameState !== GameState.Playing || guesses.length === 0}
-          onClick={() => {
-            setHint(
-              `The answer was ${target.toUpperCase()}. (Enter to play again)`
-            );
-            setGameState(GameState.Lost);
-            (document.activeElement as HTMLElement)?.blur();
-          }}
-        >
-          Give up
-        </button>
-      </div>
       <table
         className="Game-rows"
         tabIndex={0}
