@@ -112,6 +112,7 @@ function Game(props: GameProps) {
         window.location.pathname + currentSeedParams()
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wordLength, gameNumber]);
   const tableRef = useRef<HTMLTableElement>(null);
   const startNextGame = () => {
@@ -224,6 +225,7 @@ function Game(props: GameProps) {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentGuess, gameState]);
 
   let letterInfo = new Map<string, Clue>();
