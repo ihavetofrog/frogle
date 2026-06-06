@@ -4,7 +4,6 @@ import dictionary from "./dictionary.json";
 import { Clue, clue, describeClue, violation } from "./clue";
 import { Keyboard } from "./Keyboard";
 import {
-  describeSeed,
   dictionarySet,
   Difficulty,
   gameName,
