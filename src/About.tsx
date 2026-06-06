@@ -14,10 +14,17 @@ export function About() {
         I think is based on the TV show <i>Lingo</i>.
       </p>
       <p>
-        You get {maxGuesses} tries to guess a target word.
-        <br />
-        After each guess, you get Mastermind-style feedback.
+        It is forked from{" "}
+        <a href="https://github.com/lynn/hello">hello wordl</a>, an open-source
+        Wordle clone by{" "}
+        <a href="https://github.com/lynn">lynn</a>.
       </p>
+      <p>
+        You get {maxGuesses} tries to guess the word.
+        <br />
+        After each guess, you get Wordle-style feedback.
+      </p>
+
       <hr />
       <Row
         rowState={RowState.LockedIn}
@@ -71,16 +78,16 @@ export function About() {
         annotation={"Got it!"}
       />
       <p>
-        Report issues{" "}
-        <a href="https://github.com/lynn/hello-wordl/issues">here</a>, or tweet{" "}
-        <a href="https://twitter.com/chordbug">@chordbug</a>.
+        Frogle was made for the <b>ihavetofrog</b> community as a joke.
       </p>
       <p>
-        This game will be free and ad-free forever,
+        Source code lives on{" "}
+        <a href="https://github.com/ihavetofrog/frogle">GitHub</a>.
         <br />
-        but you can <a href="https://ko-fi.com/chordbug">buy me a coffee</a> if
-        you'd like.
+        Original project:{" "}
+        <a href="https://github.com/lynn/hello">hello wordl</a>.
       </p>
+
     </div>
   );
 }

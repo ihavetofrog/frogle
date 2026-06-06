@@ -71,6 +71,7 @@ function App() {
   return (
     <div className={"App-container" + (colorBlind ? " color-blind" : "")}>
       <h1>frogle</h1>
+      <p className="tagline">Wordle, but the answer is always frog.</p>
       <div className="top-right">
         {page !== "game" ? (
           link("❌", "Close", "game")
